@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daftar publikasi penelitian dosen Departemen Informatika, Fakultas Teknik, Universitas Hasanuddin">
+  <title>Daftar Publikasi Penelitian Dosen &mdash; Informatika FT-UH</title>
+  <style>
+    :root {
+      --uh-blue: #1a3c6e;
+      --uh-gold: #c9a227;
+      --uh-light: #f4f7fb;
+      --uh-border: #c5d0e0;
+      --text: #222;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--uh-light);
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--uh-blue);
+      color: #fff;
+      padding: 1.2rem 2rem;
+      flex-wrap: wrap;
+    }
+    header .logo-unhas {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 6px;
+      padding: 3px;
+    }
+    header .brand-text h1 { margin: 0; font-size: 1.35rem; }
+    header .brand-text p { margin: 0.15rem 0 0; font-size: 0.9rem; opacity: 0.9; }
+    main { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+    section {
+      background: #fff;
+      border: 1px solid var(--uh-border);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.6rem;
+    }
+    h2 { color: var(--uh-blue); border-bottom: 3px solid var(--uh-gold); padding-bottom: 0.3rem; }
+    h3 { color: var(--uh-blue); margin-bottom: 0.2rem; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin-bottom: 2rem; }
+    table:last-child { margin-bottom: 0; }
+    caption { caption-side: top; text-align: left; font-weight: bold; margin-bottom: 0.6rem; color: var(--uh-blue); }
+    th, td { border: 1px solid var(--uh-border); padding: 0.55rem 0.7rem; vertical-align: top; text-align: left; }
+    thead th { background: var(--uh-blue); color: #fff; text-align: center; }
+    tbody tr:nth-child(even) td { background: #fafcff; }
+    tfoot td { background: #fdf6e3; font-weight: bold; text-align: center; }
+    .profil-dosen { font-size: 0.85rem; margin: 0 0 1rem; color: #555; }
+    .profil-dosen a { color: #0b5ed7; text-decoration: none; }
+    .profil-dosen a:hover { text-decoration: underline; }
+    .judul-publikasi a { color: #0b5ed7; text-decoration: none; }
+    .judul-publikasi a:hover { text-decoration: underline; }
+    .tahun { text-align: center; white-space: nowrap; }
+    .terindeks { text-align: center; white-space: nowrap; }
+    .table-wrap { overflow-x: auto; }
+    ol.bidang > li { margin-bottom: 0.8rem; font-weight: bold; color: var(--uh-blue); }
+    ol.bidang ul { font-weight: normal; color: var(--text); margin-top: 0.3rem; }
+    figure.metodologi { margin: 0; text-align: center; }
+    figure.metodologi svg { max-width: 100%; height: auto; }
+    figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: #555; font-style: italic; }
+    footer { text-align: center; padding: 1.2rem; font-size: 0.85rem; color: #666; }
+    .catatan { font-size: 0.85rem; color: #555; background: #eef4ff; border-left: 4px solid var(--uh-gold); padding: 0.6rem 0.9rem; }
+  </style>
+<base target="_blank">
+</head>
+<body>
+
+  <!-- ===================== KOP / LOGO INSTANSI ===================== -->
+  <header>
+    <a href="https://unhas.ac.id" title="Situs resmi Universitas Hasanuddin">
+      <img
+        class="logo-unhas"
+        src="logo-unhas.jpg"
+        alt="Logo Universitas Hasanuddin"
+        width="76"
+        height="76"
+      >
+    </a>
+    <div class="brand-text">
+      <h1>Daftar Publikasi Penelitian Dosen</h1>
+      <p>Departemen Informatika, Fakultas Teknik, Universitas Hasanuddin</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== DESKRIPSI RISET ===================== -->
+    <section id="tentang">
+      <h2>Tentang Riset di Departemen Informatika</h2>
+      <p>
+        Departemen Informatika Universitas Hasanuddin aktif melakukan riset
+        <strong>R&amp;D</strong> (riset dan pengembangan) dalam bidang kecerdasan buatan,
+        visi komputer, Internet of Things (IoT), dan jaringan komputer. Dalam
+        <strong>&lt;5 tahun</strong> terakhir, para dosen telah menghasilkan puluhan
+        publikasi dengan sitasi <strong>&gt;600</strong>, serta memenangkan pendanaan hibah
+        dengan nilai <strong>&gt;Rp 40 juta</strong> per proyek, bekerja sama dengan mitra
+        seperti JICA, Kyushu Institute of Technology, Kobe University, dan Nara Institute of
+        Science and Technology (NAIST).
+      </p>
+      <p class="catatan">
+        Sumber data: Staff Handbook Departemen Informatika FT-UH, profil SINTA
+        (Kemdikbudristek), dan Discover Unhas.
+      </p>
+    </section>
+
+    <!-- ===================== BIDANG KEAHLIAN (OL > UL) ===================== -->
+    <section id="keahlian">
+      <h2>Bidang Keahlian &amp; Fokus Riset</h2>
+      <ol class="bidang">
+        <li>Kecerdasan Buatan &amp; Visi Komputer &mdash; Prof. Dr. Ir. Indrabayu, ST., MT., M.Bus.Sys., IPM, ASEAN Eng.
+          <ul>
+            <li>Pengolahan citra dan analisis video (fire detection, object counting)</li>
+            <li>Deteksi objek berbasis deep learning (YOLO, Mask R-CNN)</li>
+            <li>Sistem transportasi cerdas dan mitigasi bencana berbasis big data</li>
+          </ul>
+        </li>
+        <li>Pemrosesan Sinyal Multimedia &amp; IoT &mdash; Prof. Dr. Eng. Intan Sari Areni, ST., MT.
+          <ul>
+            <li>Speech recognition &amp; speech-to-text berbahasa Indonesia</li>
+            <li>Perangkat cerdas untuk smart home dan difabel (tuna netra)</li>
+            <li>Telekomunikasi dan power-line communication</li>
+          </ul>
+        </li>
+        <li>Jaringan Komputer &amp; Komputasi IoT &mdash; Prof. Dr. Eng. Muhammad Niswar, ST., M.IT.
+          <ul>
+            <li>Protokol messaging ringan (MQTT) untuk pertanian presisi</li>
+            <li>Smart farming &amp; smart aquaculture (budidaya kepiting)</li>
+            <li>Web programming, REST API, dan data mining akademik</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===================== TABEL PUBLIKASI ===================== -->
+    <section id="publikasi">
+      <h2>Tabel Publikasi Ilmiah per Dosen</h2>
+
+      <!-- ===== Tabel 1: Indrabayu ===== -->
+      <h3>1. Prof. Dr. Ir. Indrabayu, ST., MT., M.Bus.Sys., IPM, ASEAN Eng.</h3>
+      <p class="profil-dosen">
+        Fokus: kecerdasan buatan, visi komputer &amp; smart city &mdash;
+        Profil riset:
+        <a href="https://discover.unhas.ac.id/researchers/indrabayu" target="_blank" rel="noopener noreferrer">Discover Unhas</a> &middot;
+        <a href="https://scholar.unhas.ac.id/en/persons/indrabayu-indrabayu/" target="_blank" rel="noopener noreferrer">Scholar Unhas</a> &middot;
+        <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/5977345" target="_blank" rel="noopener noreferrer">SINTA</a>
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Tabel 1. Publikasi Prof. Indrabayu yang terindeks Scopus</caption>
+          <thead>
+            <tr>
+              <th scope="col" rowspan="2">No</th>
+              <th scope="col" colspan="3">Detail Publikasi</th>
+              <th scope="col" rowspan="2">Terindeks</th>
+            </tr>
+            <tr>
+              <th scope="col">Tahun</th>
+              <th scope="col">Judul Publikasi</th>
+              <th scope="col">Jurnal / Konferensi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="tahun">2018</td>
+              <td class="judul-publikasi">
+                <a href="https://www.researchgate.net/publication/326732280_A_modified_pinhole_camera_model_for_automatic_speed_detection_of_diagonally_moving_vehicle" target="_blank" rel="noopener noreferrer">A Modified Pinhole Camera Model for Automatic Speed Detection of Diagonally Moving Vehicle</a>
+              </td>
+              <td>Journal of Engineering Science and Technology, Vol. 13, No. 6, pp. 1722&ndash;1734</td>
+              <td class="terindeks" rowspan="5">Scopus</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="tahun">2020</td>
+              <td class="judul-publikasi">
+                <a href="https://doi.org/10.11591/eei.v9i5.2622" target="_blank" rel="noopener noreferrer">Blob Adaptation through Frames Analysis for Dynamic Fire Detection</a>
+              </td>
+              <td>Bulletin of Electrical Engineering and Informatics, Vol. 9, No. 5, pp. 2189&ndash;2197</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="tahun">2020</td>
+              <td class="judul-publikasi">A Prototype of Low Cost Weather Station for Data Spatial and Temporal Analysis</td>
+              <td>ICIC Express Letters, Vol. 14, No. 11, pp. 1121&ndash;1127</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="tahun">2024</td>
+              <td class="judul-publikasi">
+                <a href="https://www.sciencedirect.com/science/article/pii/S2352340924011004" target="_blank" rel="noopener noreferrer">IndoWaveSentiment: Indonesian Audio Dataset for Emotion Classification</a>
+              </td>
+              <td>Data in Brief (Elsevier)</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="tahun">2025</td>
+              <td class="judul-publikasi">
+                <a href="https://www.etasr.com/index.php/ETASR/article/view/12465" target="_blank" rel="noopener noreferrer">Smart Detection of Sugarcane Leaf Rust Using UAV-Based Multispectral Imaging and Mask R-CNN</a>
+              </td>
+              <td>Engineering, Technology &amp; Applied Science Research (ETASR)</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">Total 5 publikasi terindeks Scopus (sumber: Staff Handbook Informatika FT-UH)</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- ===== Tabel 2: Intan Sari Areni ===== -->
+      <h3>2. Prof. Dr. Eng. Intan Sari Areni, ST., MT.</h3>
+      <p class="profil-dosen">
+        Fokus: pemrosesan sinyal multimedia, IoT &amp; telekomunikasi &mdash;
+        Profil riset:
+        <a href="https://discover.unhas.ac.id/researchers/eng-intan-sari-areni" target="_blank" rel="noopener noreferrer">Discover Unhas</a> &middot;
+        <a href="https://scholar.unhas.ac.id/en/persons/intan-sari-areni/" target="_blank" rel="noopener noreferrer">Scholar Unhas</a> &middot;
+        <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/5975448" target="_blank" rel="noopener noreferrer">SINTA</a>
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Tabel 2. Publikasi Prof. Intan Sari Areni yang terindeks Scopus</caption>
+          <thead>
+            <tr>
+              <th scope="col" rowspan="2">No</th>
+              <th scope="col" colspan="3">Detail Publikasi</th>
+              <th scope="col" rowspan="2">Terindeks</th>
+            </tr>
+            <tr>
+              <th scope="col">Tahun</th>
+              <th scope="col">Judul Publikasi</th>
+              <th scope="col">Jurnal / Konferensi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="tahun">2018</td>
+              <td class="judul-publikasi">
+                <a href="https://doi.org/10.3844/jcssp.2017.393.399" target="_blank" rel="noopener noreferrer">A Hybrid Feature Extraction Method for Accuracy Improvement in &ldquo;Aksara Lontara&rdquo; Translation</a>
+              </td>
+              <td>Journal of Computer Science, ISSN 1549-3636</td>
+              <td class="terindeks" rowspan="4">Scopus</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="tahun">2019</td>
+              <td class="judul-publikasi">
+                <a href="https://thescipub.com/pdf/jcssp.2019.824.831.pdf" target="_blank" rel="noopener noreferrer">Speech to Text in Indonesian Personal Assistant</a>
+              </td>
+              <td>Journal of Computer Science, Vol. 15, No. 6, pp. 824&ndash;831</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="tahun">2020</td>
+              <td class="judul-publikasi">
+                <a href="https://doi.org/10.3991/ijim.v14i18.15649" target="_blank" rel="noopener noreferrer">IoT-Based of Automatic Electrical Appliance for Smart Home</a>
+              </td>
+              <td>International Journal of Interactive Mobile Technologies (iJIM), Vol. 14, No. 18, pp. 204&ndash;211</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="tahun">2022</td>
+              <td class="judul-publikasi">
+                <a href="https://doi.org/10.3991/ijim.v16i05.26737" target="_blank" rel="noopener noreferrer">Smart Electrical Devices Control with Intrusion Detection Alert</a>
+              </td>
+              <td>International Journal of Interactive Mobile Technologies (iJIM), Vol. 16, No. 05, pp. 139&ndash;152</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">Total 4 publikasi terindeks Scopus (sumber: Staff Handbook Informatika FT-UH)</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- ===== Tabel 3: Muhammad Niswar ===== -->
+      <h3>3. Prof. Dr. Eng. Muhammad Niswar, ST., M.IT.</h3>
+      <p class="profil-dosen">
+        Fokus: jaringan komputer, IoT &amp; smart farming &mdash;
+        Profil riset:
+        <a href="https://scholar.unhas.ac.id/en/persons/muhammad-niswar/" target="_blank" rel="noopener noreferrer">Scholar Unhas</a> &middot;
+        <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6005740" target="_blank" rel="noopener noreferrer">SINTA</a> &middot;
+        <a href="https://eng.unhas.ac.id/informatics/lecturer/197309221999031001" target="_blank" rel="noopener noreferrer">FT-UH</a>
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Tabel 3. Publikasi Prof. Muhammad Niswar yang terindeks Scopus</caption>
+          <thead>
+            <tr>
+              <th scope="col" rowspan="2">No</th>
+              <th scope="col" colspan="3">Detail Publikasi</th>
+              <th scope="col" rowspan="2">Terindeks</th>
+            </tr>
+            <tr>
+              <th scope="col">Tahun</th>
+              <th scope="col">Judul Publikasi</th>
+              <th scope="col">Jurnal / Konferensi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="tahun">2019</td>
+              <td class="judul-publikasi">
+                <a href="https://doi.org/10.11591/ijece.v9i4.pp2321-2327" target="_blank" rel="noopener noreferrer">A Low Cost Wearable Medical Device for Vital Signs Monitoring in Low-Resource Settings</a>
+              </td>
+              <td>International Journal of Electrical and Computer Engineering, Vol. 9, No. 4, pp. 2321&ndash;2327</td>
+              <td class="terindeks" rowspan="5">Scopus</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="tahun">2019</td>
+              <td class="judul-publikasi">
+                <a href="https://doi.org/10.1109/ISRITI48646.2019.9034609" target="_blank" rel="noopener noreferrer">Detection of Megalopa Phase Crab Larvae Using Digital Image Processing</a>
+              </td>
+              <td>Proc. 2nd ISRITI 2019, pp. 269&ndash;272</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="tahun">2020</td>
+              <td class="judul-publikasi">
+                <a href="https://iopscience.iop.org/article/10.1088/1757-899X/875/1/012047" target="_blank" rel="noopener noreferrer">Design and Implementation of REST API for Academic Information System</a>
+              </td>
+              <td>IOP Conference Series: Materials Science and Engineering, Vol. 875, No. 1, 012047</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="tahun">2021</td>
+              <td class="judul-publikasi">
+                <a href="https://doi.org/10.1109/ICOIN50884.2021.9333986" target="_blank" rel="noopener noreferrer">Lightweight Messaging Protocol for Precision Agriculture</a>
+              </td>
+              <td>International Conference on Information Networking (ICOIN), pp. 403&ndash;407</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="tahun">2021</td>
+              <td class="judul-publikasi">
+                <a href="https://www.scopus.com/pages/publications/85104110643" target="_blank" rel="noopener noreferrer">The Effect of Recirculating Aquaculture System on Blue Swimming Crab (Portunus pelagicus) Instar Crablet Growth and Survival Rate</a>
+              </td>
+              <td>AACL Bioflux, Vol. 14, No. 2, pp. 718&ndash;724</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">Total 5 publikasi terindeks Scopus (sumber: Staff Handbook Informatika FT-UH)</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================== FIGURE DIAGRAM METODOLOGI ===================== -->
+    <section id="metodologi">
+      <h2>Diagram Alur Metodologi Riset</h2>
+      <figure class="metodologi">
+        <svg width="920" height="180" viewBox="0 0 920 180" role="img" aria-label="Diagram alur metodologi riset">
+          <defs>
+            <marker id="panah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#1a3c6e"/>
+            </marker>
+          </defs>
+          <!-- kotak proses -->
+          <g font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">
+            <rect x="10"   y="60" width="120" height="52" rx="8" fill="#1a3c6e"/>
+            <text x="70"  y="82" fill="#fff">Identifikasi</text>
+            <text x="70"  y="98" fill="#fff">Masalah</text>
+
+            <rect x="160"  y="60" width="120" height="52" rx="8" fill="#eaf0f8" stroke="#1a3c6e"/>
+            <text x="220" y="82" fill="#1a3c6e">Studi Literatur &amp;</text>
+            <text x="220" y="98" fill="#1a3c6e">State of the Art</text>
+
+            <rect x="310"  y="60" width="120" height="52" rx="8" fill="#eaf0f8" stroke="#1a3c6e"/>
+            <text x="370" y="82" fill="#1a3c6e">Pengumpulan</text>
+            <text x="370" y="98" fill="#1a3c6e">&amp; Pra-pemrosesan Data</text>
+
+            <rect x="460"  y="60" width="120" height="52" rx="8" fill="#eaf0f8" stroke="#1a3c6e"/>
+            <text x="520" y="82" fill="#1a3c6e">Pengembangan</text>
+            <text x="520" y="98" fill="#1a3c6e">Model (AI / IoT)</text>
+
+            <rect x="610"  y="60" width="120" height="52" rx="8" fill="#eaf0f8" stroke="#1a3c6e"/>
+            <text x="670" y="82" fill="#1a3c6e">Evaluasi &amp;</text>
+            <text x="670" y="98" fill="#1a3c6e">Validasi</text>
+
+            <rect x="760"  y="60" width="140" height="52" rx="8" fill="#c9a227"/>
+            <text x="830" y="82" fill="#1a3c6e">Publikasi Ilmiah</text>
+            <text x="830" y="98" fill="#1a3c6e">&amp; Implementasi</text>
+          </g>
+          <!-- panah alur -->
+          <g stroke="#1a3c6e" stroke-width="2" fill="none">
+            <line x1="130" y1="86" x2="156" y2="86" marker-end="url(#panah)"/>
+            <line x1="280" y1="86" x2="306" y2="86" marker-end="url(#panah)"/>
+            <line x1="430" y1="86" x2="456" y2="86" marker-end="url(#panah)"/>
+            <line x1="580" y1="86" x2="606" y2="86" marker-end="url(#panah)"/>
+            <line x1="730" y1="86" x2="756" y2="86" marker-end="url(#panah)"/>
+          </g>
+          <!-- umpan balik -->
+          <path d="M670 112 V150 H520 V116" fill="none" stroke="#c9a227" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#panah)"/>
+          <text x="595" y="164" text-anchor="middle" font-size="11" fill="#8a6d12" font-family="Segoe UI, Arial, sans-serif">umpan balik perbaikan model</text>
+        </svg>
+        <figcaption>
+          Gambar 1. Alur metodologi riset dosen Informatika FT-UH: dari identifikasi masalah
+          hingga publikasi ilmiah terindeks Scopus, dengan siklus umpan balik pada tahap evaluasi.
+        </figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Departemen Informatika, Fakultas Teknik, Universitas Hasanuddin, reyvandi1186@gmail.com &mdash; Tugas Mandiri Modul 2: Standardisasi Konten Web</p>
+  </footer>
+
+</body>
+</html>
