@@ -1,0 +1,271 @@
+/* ============================================================
+   03-tugas-style.css
+   Tugas Mandiri Modul 3 — Kartu Multimedia Kuliah Responsif
+   Metodologi penamaan: BEM (Block Element Modifier)
+   ============================================================ */
+
+/* 1. Reset global: model border-box*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Variabel & dasar */
+:root {
+  --color-bg: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-text: #1c2333;
+  --color-text-muted: #5c667a;
+  --color-primary: #4f6df5;
+  --color-primary-dark: #3b53c9;
+  --color-accent: #eef1fe;
+  --color-border: #e3e7f0;
+  --radius-card: 20px;
+  --radius-inner: 12px;
+  --shadow-card: 0 6px 24px rgba(28, 35, 51, 0.08);
+  --shadow-card-hover: 0 16px 40px rgba(28, 35, 51, 0.16);
+  --transition: 0.3s ease;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3. Tata letak halaman */
+.page {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 48px 20px 64px;
+}
+
+.page__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.page__title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.page__subtitle {
+  color: var(--color-text-muted);
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* 4. Block: card */
+.card {
+  /* margin terpusat */
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);   /* sudut melengkung */
+  box-shadow: var(--shadow-card);      /* bayangan */
+  overflow: hidden;
+  /* transisi lembut saat hover */
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-6px);
+}
+
+/* Element: media sampul */
+.card__media {
+  position: relative;
+}
+
+.card__cover {
+  display: block;
+  width: 100%;
+}
+
+.card__cover-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.card__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(28, 35, 51, 0.75);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+}
+
+/* Element: badan kartu */
+.card__body {
+  padding: 28px;
+}
+
+.card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.card__tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.card__duration {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+/* Element: deskripsi — gaya dasar (target demo spesifisitas) */
+.card__description {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+}
+
+.card__description code {
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.85em;
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* Element: pemutar */
+.card__player {
+  margin-bottom: 18px;
+}
+
+.card__video {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-inner);
+  background: #0e1320;
+  aspect-ratio: 16 / 9;
+}
+
+.card__player--audio {
+  background: var(--color-accent);
+  border-radius: var(--radius-inner);
+  padding: 16px 18px;
+}
+
+.card__audio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 10px;
+}
+
+.card__audio-icon {
+  font-size: 1rem;
+}
+
+.card__audio {
+  display: block;
+  width: 100%;
+}
+
+/* Element: footer */
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
+}
+
+.card__status {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.card__action {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.card__action:hover {
+  color: var(--color-primary-dark);
+}
+
+/* 5. Spesifisitas: gaya khusus menimpa deskripsi
+   Selector di bawah sengaja dibuat LEBIH SPESIFIK
+   (block + modifier + element) sehingga menimpa
+   .card__description meskipun urutannya di bawah. */
+
+/* Status "baru": deskripsi diberi penanda warna khusus */
+.card--baru .card__description {
+  color: var(--color-primary-dark);
+}
+
+/* Status "selesai": spesifisitas lebih tinggi lagi
+   (dua kelas pada elemen yang sama) */
+.card.card--selesai .card__description {
+  color: #14804a;
+  font-style: italic;
+}
+
+/* 6. Responsif */
+@media (max-width: 480px) {
+  .card__body {
+    padding: 20px;
+  }
+
+  .card__footer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}

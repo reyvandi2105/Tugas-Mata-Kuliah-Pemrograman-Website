@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kartu multimedia responsif untuk pembelajaran daring kampus." />
+  <title>Modul 3 — Kartu Multimedia Kuliah</title>
+  <link rel="stylesheet" href="03-tugas-style.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="page__header">
+      <p class="page__eyebrow">E-Learning Kampus · Pemrograman Web</p>
+      <h1 class="page__title">Pemutar Media Kuliah</h1>
+      <p class="page__subtitle">
+        Kartu multimedia responsif — ilustrasi sampul adaptif, video, dan audio
+        dalam satu komponen.
+      </p>
+    </header>
+
+    <!--
+      BEM Block: card
+      Modifier status: card--baru / card--selesai (demo spesifisitas CSS)
+      Media: Big Buck Bunny © Blender Foundation, lisensi CC-BY 3.0
+    -->
+    <article class="card card--baru" id="modul-3">
+      <div class="card__media">
+        <!-- Sampul art direction: dua source WebP, dipilih via query media lebar layar -->
+        <picture class="card__cover">
+          <source
+            srcset="assets/cover-desktop.webp"
+            type="image/webp"
+            media="(min-width: 768px)" />
+          <source
+            srcset="assets/cover-mobile.webp"
+            type="image/webp"
+            media="(max-width: 767px)" />
+          <img
+            class="card__cover-image"
+            src="assets/cover-mobile.webp"
+            alt="Ilustrasi sampul kuliah: dasar-dasar pemrograman web" />
+        </picture>
+        <span class="card__badge">Modul 3</span>
+      </div>
+
+      <div class="card__body">
+        <div class="card__meta">
+          <span class="card__tag">Video Kuliah</span>
+          <span class="card__duration">09:56</span>
+        </div>
+
+        <h2 class="card__title">Dasar-Dasar HTML, CSS, dan Media Web</h2>
+
+        <!-- Teks deskripsi: target demo spesifisitas via modifier status -->
+        <p class="card__description">
+          Pada sesi ini kita mempelajari elemen multimedia HTML —
+          <code>picture</code>, <code>video</code>, dan <code>audio</code> —
+          serta praktik terbaik styling dengan metodologi BEM dan
+          spesifisitas CSS. Materi disajikan dengan contoh nyata yang
+          bisa langsung dipraktikkan.
+        </p>
+
+        <div class="card__player">
+          <!-- Pemutar video: poster valid + dua format cadangan -->
+          <video
+            class="card__video"
+            controls
+            preload="metadata"
+            poster="assets/BigBuckBunny-poster.webp">
+            <source src="assets/BigBuckBunny.mp4" type="video/mp4" />
+            <source src="assets/BigBuckBunny.webm" type="video/webm" />
+            Maaf, peramban Anda tidak mendukung pemutar video HTML5.
+          </video>
+        </div>
+
+        <div class="card__player card__player--audio">
+          <div class="card__audio-label">
+            <span class="card__audio-icon" aria-hidden="true">&#9835;</span>
+            Rekaman Audio Kuliah
+          </div>
+          <audio class="card__audio" controls preload="metadata">
+            <source src="assets/BigBuckBunny-audio.mp3" type="audio/mpeg" />
+            Maaf, peramban Anda tidak mendukung pemutar audio HTML5.
+          </audio>
+        </div>
+
+        <footer class="card__footer">
+          <span class="card__status">Status: Baru</span>
+          <a class="card__action" href="#modul-3">Lihat Materi &rarr;</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
