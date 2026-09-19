@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JurnalInformatika — Portal Jurnal Ilmiah Fakultas</title>
+  <meta name="description" content="Portal jurnal ilmiah Fakultas Teknik: akses terbitan terbaru, arsip, dan publikasi penelitian dosen maupun mahasiswa.">
+
+  <!-- Bootstrap 5 via CDN (integrity + crossorigin sesuai dokumentasi resmi) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+
+  <!-- Tipografi modern -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet kustom tugas -->
+  <link rel="stylesheet" href="04-tugas-style.css">
+</head>
+<body>
+
+  <!-- HEADER & NAVIGASI (Flexbox murni) -->
+  <header class="site-header">
+    <div class="container-xxl nav-wrap">
+      <a class="brand" href="#" aria-label="Beranda JurnalInformatika">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </span>
+        <span class="brand-text">Jurnal<strong>Informatika</strong></span>
+      </a>
+
+      <!-- Toggle menu untuk mode ponsel (tanpa JavaScript) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Buka menu navigasi">
+      <label for="nav-toggle" class="nav-toggle-btn">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <a class="nav-link active" href="#">Beranda</a>
+        <a class="nav-link" href="#terbitan">Terbitan</a>
+        <a class="nav-link" href="#arsip">Arsip</a>
+        <a class="nav-link" href="#panduan">Panduan</a>
+        <a class="nav-link" href="#kontak">Kontak</a>
+        <a class="nav-cta" href="#kirim">Kirim Naskah</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SINGKAT -->
+  <section class="hero">
+    <div class="container-xxl">
+      <p class="hero-eyebrow">Portal Jurnal Ilmiah · Fakultas Teknik</p>
+      <h1 class="hero-title">Temukan Riset Terbaru,<br>Dalam Satu Portal.</h1>
+      <p class="hero-sub">Terbitan berkala terindeks nasional, akses terbuka, dan bebas diunduh untuk seluruh civitas akademika.</p>
+    </div>
+  </section>
+
+  <!-- LAYOUT UTAMA (CSS Grid kustom)
+       >= 992px  : 200px | sisa fleksibel | 220px
+       tablet    : 200px | sisa fleksibel (kolom kanan turun ke bawah)
+       ponsel    : semua bertumpuk satu kolom
+  -->
+  <main class="container-xxl layout" id="terbitan">
+
+    <!-- ========== KOLOM KIRI: SIDEBAR ========== -->
+    <aside class="sidebar-kanan sidebar-kiri" aria-label="Kategori jurnal">
+      <div class="widget">
+        <h2 class="widget-title">Kategori</h2>
+        <ul class="widget-list">
+          <li><a href="#">Rekayasa Perangkat Lunak <span class="count">24</span></a></li>
+          <li><a href="#">Kecerdasan Buatan <span class="count">18</span></a></li>
+          <li><a href="#">Jaringan &amp; Keamanan <span class="count">15</span></a></li>
+          <li><a href="#">Sistem Informasi <span class="count">12</span></a></li>
+          <li><a href="#">Data Science <span class="count">9</span></a></li>
+          <li><a href="#">Interaksi Manusia-Komputer <span class="count">6</span></a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h2 class="widget-title">Filter Terbitan</h2>
+        <form class="widget-form" action="#" method="get">
+          <label class="form-label" for="tahun">Tahun</label>
+          <select class="form-select form-select-sm" id="tahun" name="tahun">
+            <option>2026</option>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+          </select>
+
+          <label class="form-label mt-2" for="cari">Kata kunci</label>
+          <input class="form-control form-control-sm" id="cari" name="cari" type="search" placeholder="Cari judul / penulis…">
+
+          <button class="btn btn-filter w-100 mt-3" type="submit">Terapkan Filter</button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- KOLOM TENGAH: DAFTAR ARTIKEL
+         Grid mikro: repeat(auto-fit, minmax(...)) di 04-tugas-style.css
+    -->
+    <section class="konten-utama" aria-label="Daftar artikel terbaru">
+      <div class="konten-head">
+        <div>
+          <h2 class="konten-title">Terbitan Terbaru</h2>
+          <p class="konten-desc">Vol. 8 No. 2 (2026) · diterbitkan September 2026</p>
+        </div>
+        <span class="badge rounded-pill badge-jumlah">6 artikel</span>
+      </div>
+
+      <div class="artikel-grid">
+
+        <article class="card artikel-card">
+          <div class="card-body">
+            <div class="artikel-meta-top">
+              <span class="badge rounded-pill badge-kategori">Kecerdasan Buatan</span>
+              <span class="artikel-tanggal">15 Sep 2026</span>
+            </div>
+            <h3 class="card-title artikel-judul">
+              <a href="#">Deteksi Plagiarisme Kode Sumber Berbasis Transformer untuk Pembelajaran Pemrograman</a>
+            </h3>
+            <p class="artikel-penulis">Rani Puspita, Dimas A. Pratama</p>
+            <p class="card-text artikel-abstrak">Model transformer dilatih untuk membandingkan struktur AST kode mahasiswa; akurasi deteksi mencapai 94,2% pada dataset 5.000 pasangan tugas.</p>
+            <div class="artikel-footer">
+              <a href="#" class="btn btn-sm btn-baca">Baca Artikel</a>
+              <a href="#" class="btn-unduh">PDF ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card artikel-card">
+          <div class="card-body">
+            <div class="artikel-meta-top">
+              <span class="badge rounded-pill badge-kategori">Data Science</span>
+              <span class="artikel-tanggal">10 Sep 2026</span>
+            </div>
+            <h3 class="card-title artikel-judul">
+              <a href="#">Prediksi Dropout Mahasiswa Menggunakan Ensemble Learning pada Data LMS Kampus</a>
+            </h3>
+            <p class="artikel-penulis">Bagus Wicaksono, Sari Melati</p>
+            <p class="card-text artikel-abstrak">Ensemble XGBoost-LSTM meningkatkan F1-score prediksi dropout menjadi 0,89, membantu perguruan tinggi menyusun intervensi akademik lebih awal.</p>
+            <div class="artikel-footer">
+              <a href="#" class="btn btn-sm btn-baca">Baca Artikel</a>
+              <a href="#" class="btn-unduh">PDF ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card artikel-card">
+          <div class="card-body">
+            <div class="artikel-meta-top">
+              <span class="badge rounded-pill badge-kategori">Rekayasa Perangkat Lunak</span>
+              <span class="artikel-tanggal">5 Sep 2026</span>
+            </div>
+            <h3 class="card-title artikel-judul">
+              <a href="#">Microservices Architecture untuk Sistem Informasi Akademik dengan Latensi Rendah</a>
+            </h3>
+            <p class="artikel-penulis">Andi Kurniawan, Maya Rahmawati</p>
+            <p class="card-text artikel-abstrak">Migrasi monolit ke arsitektur microservices menurunkan waktu respons rata-rata dari 850 ms menjadi 210 ms dengan ketersediaan 99,9%.</p>
+            <div class="artikel-footer">
+              <a href="#" class="btn btn-sm btn-baca">Baca Artikel</a>
+              <a href="#" class="btn-unduh">PDF ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card artikel-card">
+          <div class="card-body">
+            <div class="artikel-meta-top">
+              <span class="badge rounded-pill badge-kategori">Jaringan &amp; Keamanan</span>
+              <span class="artikel-tanggal">28 Agu 2026</span>
+            </div>
+            <h3 class="card-title artikel-judul">
+              <a href="#">Analisis Keamanan API REST pada Layanan Fintech Menggunakan Pendekatan OWASP</a>
+            </h3>
+            <p class="artikel-penulis">Fajar Nugraha, Intan Permata</p>
+            <p class="card-text artikel-abstrak">Audit otomatis terhadap 12 layanan fintech menemukan 27 celah keamanan; sebagian besar berasal dari konfigurasi autentikasi yang lemah.</p>
+            <div class="artikel-footer">
+              <a href="#" class="btn btn-sm btn-baca">Baca Artikel</a>
+              <a href="#" class="btn-unduh">PDF ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card artikel-card">
+          <div class="card-body">
+            <div class="artikel-meta-top">
+              <span class="badge rounded-pill badge-kategori">Sistem Informasi</span>
+              <span class="artikel-tanggal">20 Agu 2026</span>
+            </div>
+            <h3 class="card-title artikel-judul">
+              <a href="#">E-Government Readiness Index: Studi Empiris pada 15 Pemerintah Daerah di Indonesia</a>
+            </h3>
+            <p class="artikel-penulis">Dewi Anggraini, Rizky Firmansyah</p>
+            <p class="card-text artikel-abstrak">Survei 3.200 responden menunjukkan infrastruktur dan literasi digital menjadi dua faktor penentu utama kesiapan layanan digital pemerintah.</p>
+            <div class="artikel-footer">
+              <a href="#" class="btn btn-sm btn-baca">Baca Artikel</a>
+              <a href="#" class="btn-unduh">PDF ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card artikel-card">
+          <div class="card-body">
+            <div class="artikel-meta-top">
+              <span class="badge rounded-pill badge-kategori">Interaksi Manusia-Komputer</span>
+              <span class="artikel-tanggal">12 Agu 2026</span>
+            </div>
+            <h3 class="card-title artikel-judul">
+              <a href="#">Evaluasi Kegunaan Antarmuka Aplikasi Kesehatan Mobile dengan Metode System Usability Scale</a>
+            </h3>
+            <p class="artikel-penulis">Nadia Safitri, Bimo Aditya</p>
+            <p class="card-text artikel-abstrak">Skor SUS rata-rata 82,5 pada 240 pengguna menempatkan aplikasi pada kategori "Excellent"; rekomendasi perbaikan diuraikan berdasarkan heuristik Nielsen.</p>
+            <div class="artikel-footer">
+              <a href="#" class="btn btn-sm btn-baca">Baca Artikel</a>
+              <a href="#" class="btn-unduh">PDF ↓</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <nav class="mt-4" aria-label="Navigasi halaman artikel">
+        <ul class="pagination pagination-sm justify-content-center halaman">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">‹</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">›</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- KOLOM KANAN: WIDGET -->
+    <aside class="sidebar-kanan" aria-label="Informasi tambahan jurnal">
+      <div class="widget widget-tentang" id="panduan">
+        <h2 class="widget-title">Tentang Jurnal</h2>
+        <p class="widget-text">JurnalInformatika adalah jurnal akses terbuka yang diterbitkan dua kali setahun oleh Fakultas Teknik. Seluruh artikel melalui proses peer-review ganda buta.</p>
+        <a class="widget-link" href="#">Baca panduan penulis →</a>
+      </div>
+
+      <div class="widget">
+        <h2 class="widget-title">Statistik</h2>
+        <div class="stat-grid">
+          <div class="stat-item"><span class="stat-angka">84</span><span class="stat-label">Artikel</span></div>
+          <div class="stat-item"><span class="stat-angka">12,4k</span><span class="stat-label">Unduhan</span></div>
+          <div class="stat-item"><span class="stat-angka">9,1k</span><span class="stat-label">Dilihat</span></div>
+          <div class="stat-item"><span class="stat-angka">156</span><span class="stat-label">Sitasi</span></div>
+        </div>
+      </div>
+
+      <div class="widget">
+        <h2 class="widget-title">Paling Dibaca</h2>
+        <ol class="populer-list">
+          <li><a href="#">Klasifikasi Citra X-Ray Paru dengan CNN <span>2,1k dilihat</span></a></li>
+          <li><a href="#">Chatbot Layanan Akademik Berbasis NLP <span>1,7k dilihat</span></a></li>
+          <li><a href="#">Blockchain untuk Sertifikat Digital <span>1,3k dilihat</span></a></li>
+        </ol>
+      </div>
+
+      <div class="widget" id="kirim">
+        <h2 class="widget-title">Buletin Terbitan</h2>
+        <form class="widget-form" action="#" method="post">
+          <label class="form-label" for="email">Dapatkan notifikasi setiap terbitan baru.</label>
+          <input class="form-control form-control-sm" id="email" name="email" type="email" placeholder="nama@kampus.ac.id" required>
+          <button class="btn btn-baca w-100 mt-2" type="submit">Berlangganan</button>
+        </form>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="kontak">
+    <div class="container-xxl footer-wrap">
+      <p class="footer-brand">Jurnal<strong>Informatika</strong> · Fakultas Teknik</p>
+      <p class="footer-copy">© 2026 Fakultas Teknik. Kontak: reyvandi1186@gmail.com · ISSN 2774-0000 ( daring )</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (Popper included) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+          crossorigin="anonymous"></script>
+</body>
+</html>

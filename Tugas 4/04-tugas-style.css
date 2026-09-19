@@ -1,0 +1,564 @@
+/* 04-tugas-style.css
+   Portal Jurnal Ilmiah Multi-Kolom — Tugas Mandiri Modul 4
+   ------------------------------------------------------------
+   Struktur berkas:
+     1. Design tokens & dasar
+     2. Header & navigasi (Flexbox murni)
+     3. Hero
+     4. Layout utama (CSS Grid kustom, 3 breakpoint)
+     5. Widget sidebar
+     6. Grid mikro artikel (repeat auto-fit + minmax)
+     7. Footer
+*/
+
+/* 1. Design tokens & dasar */
+:root {
+  --aksen: #4f46e5;          /* indigo utama */
+  --aksen-gelap: #4338ca;
+  --aksen-lembut: #eef2ff;
+  --teks: #1e293b;
+  --teks-lembut: #64748b;
+  --garis: #e2e8f0;
+  --latar: #f8fafc;
+  --kartu: #ffffff;
+  --radius: 14px;
+  --bayang: 0 1px 2px rgba(15, 23, 42, .06), 0 8px 24px rgba(15, 23, 42, .06);
+  --bayang-hover: 0 4px 8px rgba(15, 23, 42, .08), 0 16px 40px rgba(79, 70, 229, .14);
+  --transisi: .22s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--teks);
+  background-color: var(--latar);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 2. Header & navigasi (FLEXBOX MURNI) */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--garis);
+}
+
+.nav-wrap {
+  display: flex;                  /* flexbox utama header */
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .85rem 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.15rem;
+  color: var(--teks);
+  white-space: nowrap;
+}
+
+.brand strong {
+  color: var(--aksen);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--aksen), #7c3aed);
+  border-radius: 10px;
+}
+
+/* Toggle ponsel: dicentang lewat checkbox murni CSS */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid var(--garis);
+  border-radius: 10px;
+}
+
+.nav-toggle-btn span {
+  display: block;
+  height: 2px;
+  background: var(--teks);
+  border-radius: 2px;
+  transition: var(--transisi);
+}
+
+/* Menu navigasi: flexbox horizontal di layar lebar */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+.nav-link {
+  padding: .5rem .85rem;
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--teks-lembut);
+  border-radius: 8px;
+  transition: var(--transisi);
+}
+
+.nav-link:hover {
+  color: var(--aksen);
+  background: var(--aksen-lembut);
+}
+
+.nav-link.active {
+  color: var(--aksen);
+  background: var(--aksen-lembut);
+  font-weight: 600;
+}
+
+.nav-cta {
+  margin-left: .5rem;
+  padding: .5rem 1.1rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--aksen);
+  border-radius: 999px;
+  transition: var(--transisi);
+}
+
+.nav-cta:hover {
+  background: var(--aksen-gelap);
+  transform: translateY(-1px);
+}
+
+/* Mode ponsel: tautan MERAPAT VERTIKAL */
+@media (max-width: 767.98px) {
+  .nav-toggle-btn {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;                        /* disembunyikan sampai toggle dicentang */
+    flex-direction: column;               /* vertikal */
+    align-items: stretch;                 /* tautan merapat penuh */
+    width: 100%;
+    padding: .5rem 0 1rem;
+    border-top: 1px solid var(--garis);
+  }
+
+  /* Saat checkbox dicentang, menu muncul; header ikut menumpuk */
+  .nav-toggle:checked ~ .nav-menu {
+    display: flex;
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-btn span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-btn span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-wrap {
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    padding: .75rem .5rem;
+  }
+
+  .nav-cta {
+    margin: .5rem .5rem 0;
+    text-align: center;
+  }
+}
+
+/* 3. Hero */
+.hero {
+  padding: 3.5rem 1rem 2.5rem;
+  background:
+    radial-gradient(60rem 20rem at 80% -10%, var(--aksen-lembut), transparent),
+    linear-gradient(180deg, #fff, var(--latar));
+  border-bottom: 1px solid var(--garis);
+}
+
+.hero-eyebrow {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--aksen);
+}
+
+.hero-title {
+  margin: .5rem 0 .75rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.hero-sub {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--teks-lembut);
+}
+
+/* 4. Layout utama (CSS GRID KUSTOM) - Mobile-first:
+   semua kolom bertumpuk satu kolom. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 2rem;
+}
+
+/* Tablet (768–991px): sidebar 200px, artikel fleksibel,
+   kolom kanan TURUN KE BAWAH selebar penuh. */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .layout {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+
+  /* Hanya kolom kanan yang turun ke bawah */
+  .layout > .sidebar-kanan:not(.sidebar-kiri) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Layar lebar (>= 992px): 200px | fleksibel | 220px */
+@media (min-width: 992px) {
+  .layout {
+    grid-template-columns: 200px minmax(0, 1fr) 220px;
+  }
+}
+
+/* 5. Widget sidebar */
+.widget {
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1.25rem;
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  box-shadow: var(--bayang);
+}
+
+.widget-title {
+  margin: 0 0 .85rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--teks-lembut);
+}
+
+.widget-list {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.widget-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .6rem;
+  font-size: .88rem;
+  color: var(--teks);
+  border-radius: 8px;
+  transition: var(--transisi);
+}
+
+.widget-list a:hover {
+  color: var(--aksen);
+  background: var(--aksen-lembut);
+}
+
+.count {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--teks-lembut);
+  background: var(--latar);
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  padding: .1rem .5rem;
+}
+
+.widget-text {
+  font-size: .86rem;
+  color: var(--teks-lembut);
+}
+
+.widget-link {
+  display: inline-block;
+  margin-top: .4rem;
+  font-size: .86rem;
+  font-weight: 600;
+  color: var(--aksen);
+}
+
+.widget-link:hover {
+  text-decoration: underline;
+}
+
+.btn-filter {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--aksen);
+  background: var(--aksen-lembut);
+  border: 1px solid #c7d2fe;
+}
+
+.btn-filter:hover {
+  color: #fff;
+  background: var(--aksen);
+}
+
+/* Statistik */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75rem;
+}
+
+.stat-item {
+  padding: .7rem .5rem;
+  text-align: center;
+  background: var(--latar);
+  border: 1px solid var(--garis);
+  border-radius: 10px;
+}
+
+.stat-angka {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--aksen);
+}
+
+.stat-label {
+  font-size: .72rem;
+  color: var(--teks-lembut);
+}
+
+/* Artikel populer */
+.populer-list {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: .85rem;
+}
+
+.populer-list span {
+  display: block;
+  font-size: .75rem;
+  color: var(--teks-lembut);
+}
+
+.populer-list a {
+  color: var(--teks);
+}
+
+.populer-list a:hover {
+  color: var(--aksen);
+}
+
+/* Kepala konten kolom tengah */
+.konten-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.konten-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+}
+
+.konten-desc {
+  margin: .15rem 0 0;
+  font-size: .85rem;
+  color: var(--teks-lembut);
+}
+
+.badge-jumlah {
+  font-weight: 600;
+  color: var(--aksen);
+  background: var(--aksen-lembut);
+  border: 1px solid #c7d2fe;
+}
+
+/* 6. Grid mikro artikel - Kartu Bootstrap di dalam grid mikro:
+   repeat(auto-fit, minmax()) */
+.artikel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 1.25rem;
+}
+
+.artikel-card {
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  box-shadow: var(--bayang);
+  transition: transform var(--transisi), box-shadow var(--transisi);
+}
+
+.artikel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--bayang-hover);
+}
+
+.artikel-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .75rem;
+}
+
+.badge-kategori {
+  color: var(--aksen);
+  background: var(--aksen-lembut);
+}
+
+.artikel-tanggal {
+  font-size: .75rem;
+  color: var(--teks-lembut);
+}
+
+.artikel-judul {
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.artikel-judul a {
+  color: var(--teks);
+}
+
+.artikel-judul a:hover {
+  color: var(--aksen);
+}
+
+.artikel-penulis {
+  margin: -.2rem 0 .6rem;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--aksen);
+}
+
+.artikel-abstrak {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: .88rem;
+  color: var(--teks-lembut);
+}
+
+.artikel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.btn-baca {
+  font-weight: 600;
+  color: #fff;
+  background: var(--aksen);
+  border: none;
+  border-radius: 8px;
+}
+
+.btn-baca:hover,
+.btn-baca:focus {
+  background: var(--aksen-gelap);
+  color: #fff;
+}
+
+.btn-unduh {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--teks-lembut);
+}
+
+.btn-unduh:hover {
+  color: var(--aksen);
+}
+
+/* Pagination */
+.halaman .page-link {
+  color: var(--aksen);
+  border-color: var(--garis);
+}
+
+.halaman .active .page-link {
+  background: var(--aksen);
+  border-color: var(--aksen);
+}
+
+/* 7. Footer */
+.site-footer {
+  margin-top: 1.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid var(--garis);
+}
+
+.footer-brand {
+  margin: 0 0 .3rem;
+  font-weight: 600;
+}
+
+.footer-brand strong {
+  color: var(--aksen);
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: .82rem;
+  color: var(--teks-lembut);
+}
