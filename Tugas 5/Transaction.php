@@ -2,25 +2,27 @@
 
 declare(strict_types=1);
 
+/**
+ * Class Transaction
+ *
+ * Merepresentasikan satu transaksi keuangan (deposit / penarikan).
+ * Menggunakan constructor property promotion dan properti private
+ * (enkapsulasi) sesuai spesifikasi tugas.
+ */
 class Transaction
 {
+    /**
+     * @param string $type   Jenis transaksi: 'deposit' atau 'withdrawal'
+     * @param float  $amount Jumlah transaksi (angka desimal positif)
+     */
     public function __construct(
-        private readonly int $id,
-        private readonly string $type,
-        private readonly float $amount
+        private string $id,
+        private string $type,
+        private float $amount,
     ) {
     }
 
-    public function process(): bool
-    {
-        return match ($this->type) {
-            'deposit' => $this->processDeposit(),
-            'withdraw' => $this->processWithdraw(),
-            default => throw new InvalidArgumentException('Jenis transaksi tidak valid.'),
-        };
-    }
-
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
@@ -35,21 +37,38 @@ class Transaction
         return $this->amount;
     }
 
-    private function processDeposit(): bool
+    /**
+     * Memproses transaksi terhadap saldo yang disimpan di sesi.
+     *
+     * - Deposit  : saldo bertambah.
+     * - Penarikan: ditolak (return false) bila saldo tidak mencukupi,
+     *              saldo berkurang bila mencukupi.
+     *
+     * @param float $balance Saldo saat ini (di-pass by reference agar mutakhir)
+     */
+    public function process(float &$balance): bool
     {
-        $_SESSION['balance'] += $this->amount;
+        if ($this->type === 'withdrawal') {
+            if ($this->amount > $balance) {
+                return false; // saldo tidak mencukupi
+            }
+            $balance -= $this->amount;
+
+            return true;
+        }
+
+        $balance += $this->amount;
 
         return true;
     }
 
-    private function processWithdraw(): bool
+    /**
+     * Format jumlah sebagai Rupiah untuk ditampilkan di UI.
+     */
+    public function getFormattedAmount(): string
     {
-        if ($_SESSION['balance'] < $this->amount) {
-            return false;
-        }
+        $prefix = $this->type === 'deposit' ? '+' : '-';
 
-        $_SESSION['balance'] -= $this->amount;
-
-        return true;
+        return $prefix . ' Rp ' . number_format($this->amount, 2, ',', '.');
     }
 }
