@@ -1,7 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
+/**
+ * GuestBook.php
+ * Mengelola data buku tamu melalui koneksi PDO.
+ */
 final class GuestBook
 {
     private PDO $pdo;
@@ -11,6 +14,9 @@ final class GuestBook
         $this->pdo = $pdo;
     }
 
+    /**
+     * Menyimpan pesan baru menggunakan prepared statement.
+     */
     public function addEntry(
         string $nama,
         string $email,
@@ -28,6 +34,9 @@ final class GuestBook
         ]);
     }
 
+    /**
+     * Mengambil seluruh pesan, dengan yang terbaru di atas.
+     */
     public function getEntries(): array
     {
         $sql = 'SELECT id, nama, email, pesan, tanggal_kirim
@@ -38,5 +47,20 @@ final class GuestBook
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Menghitung total pesan yang tersimpan.
+     */
+    public function countEntries(): int
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT COUNT(*) AS total FROM buku_tamu'
+        );
+
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return (int) ($result['total'] ?? 0);
     }
 }
